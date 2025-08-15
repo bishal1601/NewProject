@@ -1,0 +1,40 @@
+@model System.Collections.Generic.List<ProjectInventory.Entities.Category>
+
+@{
+    ViewBag.Title = "Category List";
+    Layout = "_Layout";
+}
+
+<h2>Category List</h2>
+<a asp-action="Create" class="btn btn-primary">Add New Item</a>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Category Name</th>
+        <th>Category Description</th>
+        <th>IsActive</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var items in Model)
+    {
+        <tr>
+            <td>@items.Name</td>
+            <td>@items.Description</td>
+            <td>
+                @if(items.IsActive){
+                <span>Active</span>
+                }
+                else{
+                <span>InActive</span>
+                }
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-Id="@items.Id" class="btn btn-secondary">Edit</a>
+                <a asp-action="Remove" asp-route-Id="@items.Id" class="btn btn-secondary">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -1,0 +1,28 @@
+@model UnitVm
+
+@{
+    ViewBag.Title = "Units";
+    Layout = "_Layout";
+}
+
+<form asp-action="Create" method="Post">
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label asp-for="Name">Name</label>
+        <input type="text" asp-for="Name" class="form-control" required/>
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Symbol">Short Name</label>
+        <input type="text" asp-for="Symbol" class="form-control" required/>
+        <span asp-validation-for="Symbol" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description">Description</label>
+        <input type="text" asp-for="Description" class="form-control"/>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <br/>
+    <button type="submit" asp-action="Create" class="btn btn-primary">Add</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

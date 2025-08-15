@@ -1,0 +1,48 @@
+@model ProductVm
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<form asp-action="Create" method="Post">
+@Html.AntiForgeryToken()
+<span asp-validation-summary="All" class="text-danger"></span>
+<div class="form-group">
+    <label asp-for="Name" class="form-label">Product Name</label>
+    <input type="text" asp-for="Name" class="form-control" placeholder="Enter Product Name" required/>
+    <span asp-validation-for="Name" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Code" class="form-label">Product Code</label>
+    <input type="text" asp-for="Code" class="form-control" placeholder="Enter Product code" required/>
+    <span asp-validation-for="Code" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="CostPrice" class="form-label">Price</label>
+    <input type="number" asp-for="CostPrice" class="form-control" placeholder="Enter product price" required/>
+    <span asp-validation-for="CostPrice" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="UnitId" class="form-label">Unit</label>
+    <Select asp-for="UnitId" asp-items="Model.Units" class="form-select">
+        <option value="">---SELECT UNIT---</option>
+    </Select>
+    <span asp-validation-for="UnitId" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="CategoryId" class="form-label">Category</label>
+    <Select asp-for="CategoryId" class="form-select" asp-items="Model.Categories">
+        <option value="">---SELECT CATEGORY---</option>
+    </Select>
+    <span asp-validation-for="CategoryId" class="text-danger"></span>
+</div>
+<div class="form-group" >
+    <label asp-for="Description" class="form-label">Description</label>
+    <textarea type="text" asp-for="Description" class="form-control" placeholder="Enter description " required ></textarea>
+    <span asp-validation-for="Description" class="text-danger"></span>
+</div>
+<br/>
+<button type="submit" asp-action="Create" class="btn btn-primary">Add</button>
+<a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
