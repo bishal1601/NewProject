@@ -14,7 +14,7 @@ public class CategoryRepository:ICategoryRepository
     {
         _context = context;
     }
-    public async Task<List<Category?>> GetAllAsync()
+    public async Task<List<Category>> GetAllAsync()
     {
         var items = await _context.Categories.ToListAsync();
         return items;

@@ -17,17 +17,20 @@
     </tr>
     </thead>
     <tbody>
+
     @foreach (var items in Model)
     {
         <tr>
             <td>@items.Name</td>
             <td>@items.Description</td>
             <td>
-                @if(items.IsActive){
-                <span>Active</span>
+                @if (items.IsActive)
+                {
+                    <span>Active</span>
                 }
-                else{
-                <span>InActive</span>
+                else
+                {
+                    <span>InActive</span>
                 }
             </td>
             <td>
