@@ -1,7 +1,9 @@
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ProjectInventory.Repository.Interface;
 using ProjectInventory.Data;
 using ProjectInventory.Entities;
+using ProjectInventory.Enum;
 
 namespace ProjectInventory.Repository;
 
@@ -25,4 +27,19 @@ public class StakeHolderRepository : IStakeHolderRepository
         var item = await _context.StakeHolders.FindAsync(id);
         return item;
     }
+
+    public async Task<List<SelectListItem>?> GetVendor()
+    {
+       
+            return await _context.StakeHolders
+                .Where(c => c.IsActive)
+                .Select(c => new SelectListItem
+                {
+                    Value = c.Id.ToString(),
+                    Text = c.Name
+                })
+                .ToListAsync();
+        
+    }
+    
 }

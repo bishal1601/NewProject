@@ -14,7 +14,7 @@ public class StockMovementService : IStockMovementService
         _context = context;
     }
 
-    public async Task<bool> Create(List<StockMovemetDto> dto)
+    public async Task<bool> Create(List<StockMovementDto> dto)
     {
         var stockMovements = dto.Select(sm => new StockMovement
         {

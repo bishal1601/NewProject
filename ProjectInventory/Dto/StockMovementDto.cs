@@ -2,7 +2,7 @@ using ProjectInventory.Entities;
 
 namespace ProjectInventory.Dto;
 
-public class StockMovemetDto
+public class StockMovementDto
 {
     public Guid Id { get; set; }
     public DateOnly Date { get; set; }

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ProjectInventory.Data;
 using ProjectInventory.Entities;
@@ -26,6 +27,17 @@ public class ProductRepository : IProductRepository
     {
         var item = await _context.Products.FindAsync(id);
         return item;
+    }
+    public async Task<List<SelectListItem>> GetAllSelectListAsync()
+    {
+        return await _context.Products
+            .Where(c => c.IsActive)
+            .Select(c => new SelectListItem
+            {
+                Value = c.Id.ToString(),
+                Text = c.Name
+            })
+            .ToListAsync();
     }
 
 }

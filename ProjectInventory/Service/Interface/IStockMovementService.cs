@@ -4,5 +4,5 @@ namespace ProjectInventory.Service.Interface;
 
 public interface IStockMovementService
 {
-    Task<bool> Create(List<StockMovemetDto> dto);
+    Task<bool> Create(List<StockMovementDto> dto);
 }
